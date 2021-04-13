@@ -1,0 +1,62 @@
+﻿@model MvcKutuphane.Models.Entity.TBLUYELER
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<h2>Profil Bilgileri</h2>
+@using (Html.BeginForm("ProfilGuncelle", "Panel", FormMethod.Post))
+{
+
+
+<table class="table table-bordered mt-5">
+    <tr>
+        <th>Mail:</th>
+        <td>
+            @HttpContext.Current.User.Identity.Name
+        </td>
+    </tr>
+    <tr>
+        <th>Ad:</th>
+        <td>
+            @Html.TextBoxFor(x => x.AD, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <th>Soyad:</th>
+        <td>
+            @Html.TextBoxFor(x => x.SOYAD, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <th>Kullanıcı Adı:</th>
+        <td>
+            @Html.TextBoxFor(x => x.KULLANICIADI, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <th>Şifre:</th>
+        <td>
+            @Html.TextBoxFor(x => x.SIFRE, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <th>Okul:</th>
+        <td>
+            @Html.TextBoxFor(x => x.OKUL, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <th>Foto:</th>
+        <td>
+            @Html.TextBoxFor(x => x.FOTOGRAF, new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr class="text-center">
+
+        <td colspan="2">
+            <button class="btn btn-info">Şifre Güncelle</button>
+        </td>
+    </tr>
+</table>
+}

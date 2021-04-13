@@ -1,0 +1,41 @@
+﻿@using MvcKutuphane.Models.Entity
+@model List<TBLHAREKET>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Ödünç Kitap Listesi</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>İŞLEM ID</th>
+            <th>KİTAP ADI</th>
+            <th>ÜYE</th>
+            <th>PERSONEL</th>
+            <th>ALIŞ TARİHİ</th>
+            <th>İADE TARİHİ</th>
+            <th colspan="2" class="text-center">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.TBLKİTAP.AD</td>
+                <td>@item.TBLUYELER.AD @item.TBLUYELER.SOYAD</td>
+                <td>@item.TBLPERSONEL.PERSONEL</td>
+                <td>@Convert.ToDateTime(item.ALISTARIH).ToString("dd/MM/yyyy")</td>
+                <td>@Convert.ToDateTime(item.IADETARIH).ToString("dd/MM/yyyy")</td>
+                
+                <td class="text-center"> <a href="/Odunc/OduncIade/@item.ID" class="btn btn-default">Kitap İade Et</a> </td>
+                
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
