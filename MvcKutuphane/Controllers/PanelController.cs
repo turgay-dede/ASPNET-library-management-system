@@ -33,5 +33,13 @@ namespace MvcKutuphane.Controllers
             db.SaveChanges();
             return View("Index");
         }
+
+        public ActionResult Kitaplarim()
+        {
+            var mail = (string)Session["Mail"];
+            var id = db.TBLUYELER.Where(x => x.MAIL == mail.ToString()).Select(z => z.ID).FirstOrDefault();
+            var islem = db.TBLHAREKET.Where(x => x.UYE == id).ToList();
+            return View(islem);
+        }
     }
 }

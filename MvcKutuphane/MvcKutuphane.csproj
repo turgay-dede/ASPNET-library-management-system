@@ -190,6 +190,9 @@
     <Compile Include="Models\Entity\TBLKİTAP.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\TBLMESAJLAR.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\TBLPERSONEL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -574,6 +577,8 @@
     <Content Include="Views\Panel\Index.cshtml" />
     <Content Include="Views\Mesaj\Index.cshtml" />
     <Content Include="Views\Mesaj\YeniMesaj.cshtml" />
+    <Content Include="Views\Mesaj\Giden.cshtml" />
+    <Content Include="Views\Panel\Kitaplarim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
