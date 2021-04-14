@@ -7,7 +7,7 @@ using MvcKutuphane.Models.Entity;
 
 namespace MvcKutuphane.Controllers
 {
-    
+
     public class YazarController : Controller
     {
 
@@ -59,6 +59,19 @@ namespace MvcKutuphane.Controllers
             yazar.DETAY = yzr.DETAY;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+        public ActionResult YazarKitaplar(int id)
+        {
+            var kitaplar = db.TBLKİTAP.Where(x => x.YAZAR == id).ToList();
+            //var yazar = db.TBLYAZAR.Find(id);
+            //ViewBag.yazar = yazar.AD +' '+ yazar.SOYAD;
+
+            var yazar = db.TBLYAZAR.Where(y => y.ID == id).Select(z => z.AD + " " + z.SOYAD).FirstOrDefault();
+            ViewBag.yazar = yazar;
+
+            return View(kitaplar);
         }
     }
 }

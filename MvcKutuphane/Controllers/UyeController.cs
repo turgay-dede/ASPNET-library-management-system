@@ -64,5 +64,16 @@ namespace MvcKutuphane.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult UyeKitapGecmis(int id)
+        {
+            var kitapGecmis = db.TBLHAREKET.Where(x => x.UYE == id).ToList();
+            //var uye = db.TBLUYELER.Find(id);
+            //ViewBag.uye = uye.AD + ' ' + uye.SOYAD;
+
+            var uye = db.TBLUYELER.Where(y => y.ID == id).Select(z => z.AD + " " + z.SOYAD).FirstOrDefault();
+            ViewBag.uye = uye;
+            return View(kitapGecmis);
+        }
+
     }
 }

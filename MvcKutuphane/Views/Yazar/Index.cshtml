@@ -15,6 +15,7 @@
             <th>AD</th>
             <th>SOYAD</th>
             <th>DETAY</th>
+            <th>KİTAPLAR</th>
             <th class="text-center" colspan="2">İŞLEMLER</th>
 
         </tr>
@@ -27,8 +28,18 @@
                 <td>@item.AD</td>
                 <td>@item.SOYAD</td>
                 <td>@item.DETAY</td>
-                <td class="text-center">@Html.ActionLink("Sil", "YazarSil", new { id = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyor musunuz?')" })</td>
-                <td class="text-center"><a href="/Yazar/YazarGetir/@item.ID" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Yazar/YazarKitaplar/@item.ID"><img src="~/web/img/kitap.png" width="40" /></a></td>
+                <td>
+                    <a href="/Yazar/YazarSil/@item.ID" , onclick="return confirm('Silmek istiyor musunuz?')">
+                        <img src="~/web/img/delete.png" width="40" />
+                    </a>
+                </td>
+                <td>
+                    <a href="/Yazar/YazarGetir/@item.ID">
+                        <img src="~/web/img/edit.jpg" width="40" />
+                    </a>
+                </td>
+
 
             </tr>
         }

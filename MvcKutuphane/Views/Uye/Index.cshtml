@@ -13,11 +13,8 @@
             <th>ÜYE ID</th>
             <th>ÜYE ADI</th>
             <th>ÜYE SOYADI</th>
-            <th>MAİL</th>
-            <th>KULLANICI ADI</th>
-            <th>ŞİFRE</th>
-            <th>TELEFON</th>
             <th>OKUL</th>
+            <th>KİTAP GEÇMİŞİ</th>
             <th class="text-center" colspan="2">İŞLEMLER</th>
 
         </tr>
@@ -25,20 +22,17 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.ID</td>
-                <td>@item.AD</td>
-                <td>@item.SOYAD</td>
-                <td>@item.MAIL</td>
-                <td>@item.KULLANICIADI</td>
-                <td>@item.SIFRE</td>
-                <td>@item.TELEFON</td>
-                <td>@item.OKUL</td>
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.AD</td>
+            <td>@item.SOYAD</td>
+            <td>@item.OKUL</td>
+            <td class="text-center"><a href="/Uye/UyeKitapGecmis/@item.ID" class="btn btn-success">Kitap Geçmişi</a></td>
 
-                <td class="text-center">@Html.ActionLink("Sil", "UyeSil", new { id = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyor musunuz?')" })</td>
-                <td class="text-center"><a href="/Uye/UyeGetir/@item.ID" class="btn btn-success">Güncelle</a></td>
+            <td class="text-center">@Html.ActionLink("Sil", "UyeSil", new { id = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyor musunuz?')" })</td>
+            <td class="text-center"><a href="/Uye/UyeGetir/@item.ID" class="btn btn-success">Güncelle</a></td>
 
-            </tr>
+        </tr>
         }
 
     </tbody>

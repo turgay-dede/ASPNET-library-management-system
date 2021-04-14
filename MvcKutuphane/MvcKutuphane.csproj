@@ -381,6 +381,9 @@
     <Content Include="web\css\freelancer.css" />
     <Content Include="web\css\freelancer.min.css" />
     <Content Include="web\gulpfile.js" />
+    <Content Include="web\img\delete.png" />
+    <Content Include="web\img\edit.jpg" />
+    <Content Include="web\img\kitap.png" />
     <Content Include="web\img\avataaars.svg" />
     <Content Include="web\img\BirYilbasiOykusu.jpg" />
     <Content Include="web\img\droxdeney.jpg" />
@@ -579,6 +582,8 @@
     <Content Include="Views\Mesaj\YeniMesaj.cshtml" />
     <Content Include="Views\Mesaj\Giden.cshtml" />
     <Content Include="Views\Panel\Kitaplarim.cshtml" />
+    <Content Include="Views\Yazar\YazarKitaplar.cshtml" />
+    <Content Include="Views\Uye\UyeKitapGecmis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
