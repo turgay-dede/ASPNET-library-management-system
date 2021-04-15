@@ -8,17 +8,42 @@ using MvcKutuphane.Models.Entity;
 
 namespace MvcKutuphane.Controllers
 {
+    [Authorize]
     public class PanelController : Controller
     {
         DBKUTUPHANEEntities db = new DBKUTUPHANEEntities();
         // GET: Panel
         [HttpGet]
-        [Authorize]
         public ActionResult Index()
         {
             var mail = (string)Session["Mail"];
-            var kullanici = db.TBLUYELER.FirstOrDefault(x => x.MAIL == mail);
-            return View(kullanici);
+            // var kullanici = db.TBLUYELER.FirstOrDefault(x => x.MAIL == mail);
+            var duyurular = db.TBLDUYURULAR.ToList();
+
+            var ad = db.TBLUYELER.Where(x => x.MAIL == mail).Select(y => y.AD).FirstOrDefault();
+            ViewBag.ad = ad;
+
+            var soyad = db.TBLUYELER.Where(x => x.MAIL == mail).Select(y => y.SOYAD).FirstOrDefault();
+            ViewBag.soyad = soyad;
+
+            var okul = db.TBLUYELER.Where(x => x.MAIL == mail).Select(y => y.OKUL).FirstOrDefault();
+            ViewBag.okul = okul;
+
+            var tel = db.TBLUYELER.Where(x => x.MAIL == mail).Select(y => y.TELEFON).FirstOrDefault();
+            ViewBag.tel = tel;
+
+            var uyeID = db.TBLUYELER.Where(x => x.MAIL == mail).Select(y => y.ID).FirstOrDefault();
+            var kitapSayisi = db.TBLHAREKET.Where(x => x.UYE == uyeID).Count();
+            ViewBag.kitapSayisi = kitapSayisi;
+
+            var gelenMesaj = db.TBLMESAJLAR.Where(x => x.ALICI == mail).Count();
+            ViewBag.gelenMesaj = gelenMesaj;
+
+
+            var duyuru = db.TBLDUYURULAR.Count();
+            ViewBag.duyuru = duyuru;
+
+            return View(duyurular);
         }
         [HttpPost]
         public ActionResult ProfilGuncelle(TBLUYELER uye)
@@ -52,6 +77,19 @@ namespace MvcKutuphane.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Vitrin");
+        }
+
+        public PartialViewResult PartialDuyuru()
+        {
+
+            return PartialView();
+        }
+        public PartialViewResult PartialAyarlar()
+        {
+            var mail = (string)Session["Mail"];
+            var id = db.TBLUYELER.Where(x => x.MAIL == mail).Select(y => y.ID).FirstOrDefault();
+            var uye = db.TBLUYELER.Find(id);
+            return PartialView(uye);
         }
     }
 }

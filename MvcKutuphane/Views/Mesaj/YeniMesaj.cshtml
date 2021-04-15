@@ -52,22 +52,34 @@
 
     <h3>MESAJ GÖNDER</h3>
 
-    <div class="container">
-        <form action="/Mesaj/YeniMesaj/" method="post">
-            <label for="fname">Gönderen</label>
-            <input type="text" id="fname" name="GONDEREN" value="@Session["Mail"].ToString()">
+    <div class="box box-info">
+        <div class="box-header">
+            <i class="fa fa-envelope"></i>
+            <h3 class="box-title">Mesaj Gönder</h3>
 
-            <label for="lname">Alıcı</label>
-            <input type="text" id="lname" name="ALICI" placeholder="Kime mesaj göndermek istiyorsunuz?">
+        </div>
+        <div class="box-body">
+            <form action="/Mesaj/YeniMesaj/" method="post">
+                <input type="hidden" id="fname" name="GONDEREN" value="@Session["Mail"].ToString()">
+                <div class="form-group">
+                    <label for="lname">Alıcı</label>
+                    <input type="text" id="lname" name="ALICI" placeholder="Kime mesaj göndermek istiyorsunuz?">
+                </div>
+                <div class="form-group">
+                    <label for="lname">Konu</label>
+                    <input type="text" id="lname" name="KONU" placeholder="Konuyu belirleyiniz">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Mesaj</label>
+                    @*<textarea id="subject" name="ICERIK" placeholder="Mesajınızı giriniz" style="height:200px"></textarea>*@
+                    <textarea name="ICERIK" placeholder="Mesajınızı giriniz" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                </div>
+                <input type="hidden" name="TARIH" value="@DateTime.Now.ToShortDateString()" />
+                @*<input type="submit" value="Gönder">*@
+                <button class="pull-right btn btn-default" id="sendEmail">Gönder <i class="fa fa-arrow-circle-right"></i></button>
 
-            <label for="lname">Konu</label>
-            <input type="text" id="lname" name="KONU" placeholder="Konuyu belirleyiniz">
-
-            <label for="subject">Mesaj</label>
-            <textarea id="subject" name="ICERIK" placeholder="Mesajınızı giriniz" style="height:200px"></textarea>
-            <input type="hidden" name="TARIH" value="@DateTime.Now.ToShortDateString()" />
-            <input type="submit" value="Gönder">
-        </form>
+            </form>
+        </div>
     </div>
 
 </body>
