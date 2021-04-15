@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using MvcKutuphane.Models.Entity;
 
 namespace MvcKutuphane.Controllers
@@ -40,6 +41,17 @@ namespace MvcKutuphane.Controllers
             var id = db.TBLUYELER.Where(x => x.MAIL == mail.ToString()).Select(z => z.ID).FirstOrDefault();
             var islem = db.TBLHAREKET.Where(x => x.UYE == id).ToList();
             return View(islem);
+        }
+        public ActionResult Duyurular()
+        {
+            var duyurular = db.TBLDUYURULAR.ToList();
+            return View(duyurular);
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Vitrin");
         }
     }
 }

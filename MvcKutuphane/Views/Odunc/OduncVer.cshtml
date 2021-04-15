@@ -8,15 +8,21 @@
     <div></div>
     <div class="mt-5">
         <label>Üye ID</label>
-        @Html.TextBoxFor(k => k.UYE, new { @class = "form-control" })
+        @*@Html.TextBoxFor(k => k.UYE, new { @class = "form-control" })*@
+        @Html.DropDownListFor(u=>u.TBLUYELER.ID,(List<SelectListItem>)
+       ViewBag.uyeler, new { @class = "form-control" })
     </div>
     <div class="mt-5">
         <label>Kitap ID</label>
-        @Html.TextBoxFor(k => k.KITAP, new { @class = "form-control" })
+        @*@Html.TextBoxFor(k => k.KITAP, new { @class = "form-control" })*@
+        @Html.DropDownListFor(u => u.TBLKİTAP.ID, (List<SelectListItem>)
+      ViewBag.kitaplar, new { @class = "form-control" })
     </div>
     <div class="mt-5">
         <label>Personel ID</label>
-        @Html.TextBoxFor(k => k.PERSONEL, new { @class = "form-control" })
+        @*@Html.TextBoxFor(k => k.PERSONEL, new { @class = "form-control" })*@
+        @Html.DropDownListFor(u => u.TBLPERSONEL.ID, (List<SelectListItem>)
+     ViewBag.personeller, new { @class = "form-control" })
     </div>
     <div class="mt-5">
         <label>Kitap Alış Tarihi</label>
