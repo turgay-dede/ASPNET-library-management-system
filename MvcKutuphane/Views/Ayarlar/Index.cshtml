@@ -1,0 +1,155 @@
+﻿@using MvcKutuphane.Models.Entity
+@model List<TBLADMIN>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Projects</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/AdminLTE-1/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/AdminLTE-1/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Ayarlar</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th >
+                                ID
+                            </th>
+                            <th >
+                                Kullanıcı Adı
+                            </th>
+                            <th>
+                                Avatar
+                            </th>
+                            <th  class="text-center">
+                                Yetki
+                            </th>
+                           
+                            <th>Sil</th>
+                            <th>Düzenle</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+
+                        <tr>
+                            <td>
+                               @item.ID
+                            </td>
+                            <td>
+                                <a>
+                                    @item.KULLANICI
+                                </a>
+                            </td>
+                            <td>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <img alt="Avatar" class="table-avatar" src="~/AdminLTE-1/dist/img/avatar.png">
+                                    </li>
+                                </ul>
+                            </td>
+                            <td class="project-state">
+                                @item.YETKI
+                            </td>
+                           
+                            <td class="project-actions">
+                                
+                                <a class="btn btn-danger btn-sm" href="/Ayarlar/AdminSil/@item.ID">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Sil
+                                </a>                           
+                                
+                            </td>
+                            <td>
+                                <a class="btn btn-info btn-sm" href="/Ayarlar/AdminGuncelle/@item.ID">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    Düzenle
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+
+    <button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Admin Ekle</button>
+    <div class="modal" id="Modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h2 class="modal-title">Admin Ekleme Paneli</h2>
+                </div>
+                <form action="/Ayarlar/YeniAdmin/" method="post">
+                    <div class="modal-body">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" name="KULLANICI" class="form-control" value="" />
+                        <label>Şifre</label>
+                        <input type="text" name="SIFRE" class="form-control" value="" />
+                        <label>Yetki</label>
+                        <input type="text" name="YETKI" class="form-control" value="" />
+                        
+                    </div>
+                    <div class="text-center mb-2">
+                        <button class="btn btn-info btn-block text-center">Ekle</button>
+                    </div>
+                    
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.content -->
+    <!-- jQuery -->
+    <script src="~/AdminLTE-1/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/AdminLTE-1/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/AdminLTE-1/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/AdminLTE-1/dist/js/demo.js"></script>
+</body>
+</html>
+

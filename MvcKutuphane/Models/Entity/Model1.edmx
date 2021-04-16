@@ -22,6 +22,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KULLANICI" Type="varchar" MaxLength="20" />
           <Property Name="SIFRE" Type="varchar" MaxLength="20" />
+          <Property Name="YETKI" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="TBLCEZALAR">
           <Key>
@@ -526,6 +527,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="KULLANICI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SIFRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="YETKI" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -681,6 +683,7 @@
           <EntitySetMapping Name="TBLADMIN">
             <EntityTypeMapping TypeName="DBKUTUPHANEModel.TBLADMIN">
               <MappingFragment StoreEntitySet="TBLADMIN">
+                <ScalarProperty Name="YETKI" ColumnName="YETKI" />
                 <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
                 <ScalarProperty Name="KULLANICI" ColumnName="KULLANICI" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

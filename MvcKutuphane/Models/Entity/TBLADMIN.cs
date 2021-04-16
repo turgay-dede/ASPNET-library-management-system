@@ -17,5 +17,6 @@ namespace MvcKutuphane.Models.Entity
         public int ID { get; set; }
         public string KULLANICI { get; set; }
         public string SIFRE { get; set; }
+        public string YETKI { get; set; }
     }
 }
