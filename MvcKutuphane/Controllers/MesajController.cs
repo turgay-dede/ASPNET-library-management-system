@@ -37,5 +37,17 @@ namespace MvcKutuphane.Controllers
             return View(mesajlar);
         }
 
+        public PartialViewResult PartialMesajMenu()
+        {
+            var mail = (string)Session["Mail"].ToString();
+            var gelen = db.TBLMESAJLAR.Where(x => x.ALICI == mail).Count();
+            ViewBag.gelen = gelen;
+
+            var giden = db.TBLMESAJLAR.Where(x => x.GONDEREN == mail).Count();
+            ViewBag.giden = giden;
+
+            return PartialView();
+        }
+
     }
 }

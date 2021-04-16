@@ -7,6 +7,7 @@ using MvcKutuphane.Models.Entity;
 
 namespace MvcKutuphane.Controllers
 {
+   
     public class KayitController : Controller
     {
         // GET: Kayit
